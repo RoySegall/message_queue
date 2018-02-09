@@ -48,8 +48,9 @@ abstract class QueueWorkerBase {
    *
    * @return QueueWorkerBase
    */
-  protected function setFilters($name, $value) {
+  public function setFilters($name, $value) {
     $this->filters[$name] = $value;
+
     return $this;
   }
 

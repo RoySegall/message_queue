@@ -13,16 +13,28 @@ use MessageQueue\Message;
  */
 class SimpleQueueWorker extends QueueWorkerBase {
 
+  protected $messages;
+
   /**
- * {@inheritdoc}
- */
+   * {@inheritdoc}
+   */
   function get() {
+    $reserver_name = $this->filters['reserver_name'];
+
+    // First remove messages which not match the reserver name.
+    $messages = array_filter($this->messages, function($message) use ($reserver_name) {
+      return $message['reserver_name'] === $reserver_name;
+    });
+
+    $message = end($messages);
+    return $message;
   }
 
   /**
    * {@inheritdoc}
    */
   function add(Message $message) {
+    $this->messages[$message->getId()] = $message->toArray();
   }
 
   /**

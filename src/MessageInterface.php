@@ -51,4 +51,16 @@ interface MessageInterface {
    * @return MessageInterface
    */
   public function setReserverName($reserverName);
+
+  /**
+   * @return mixed
+   */
+  public function getId();
+
+  /**
+   * @param mixed $id
+   *
+   * @return MessageInterface
+   */
+  public function setId($id);
 }

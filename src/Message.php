@@ -12,6 +12,11 @@ namespace MessageQueue;
 class Message implements MessageInterface {
 
   /**
+   * @var mixed
+   */
+  protected $id;
+
+  /**
    * @var string
    */
   protected $MessageType;
@@ -40,6 +45,10 @@ class Message implements MessageInterface {
    * @param string $text
    */
   public function __construct($reserver_name, $message_type = NULL, $category = NULL, $text = NULL) {
+    // Set the current micro time as the ID. Can be something else in case of a
+    // DB based solutions.
+    $this->id = microtime();
+
     $this
       ->setReserverName($reserver_name)
       ->setMessageType($message_type)
@@ -109,6 +118,32 @@ class Message implements MessageInterface {
     $this->reserverName = $reserverName;
 
     return $this;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getId() {
+    return $this->id;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setId($id) {
+    $this->id = $id;
+
+    return $this;
+  }
+
+  public function toArray() {
+    return [
+      'id' => $this->getId(),
+      'message_type' => $this->getMessageType(),
+      'category' => $this->getCategory(),
+      'text' => $this->getText(),
+      'reserver_name' => $this->getReserverName(),
+    ];
   }
 
 }
