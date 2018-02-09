@@ -26,7 +26,9 @@ class SimpleQueueWorker extends QueueWorkerBase {
       return $message['reserver_name'] === $reserver_name;
     });
 
+    // todo: filter by other filters.
     $message = end($messages);
+
     return $message;
   }
 

@@ -1,11 +1,10 @@
 <?php
 
 error_reporting(E_ALL);
+require_once 'vendor/autoload.php';
 
 use MessageQueue\Message;
 use MessageQueue\MessageQueue;
-
-require_once 'vendor/autoload.php';
 
 $queue = new MessageQueue();
 $messages = [

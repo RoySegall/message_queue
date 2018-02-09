@@ -1,0 +1,16 @@
+language: php
+sudo: false
+
+php:  7.1
+
+addons:
+  rethinkdb: "2.3"
+
+before_script:
+  # Installing composer
+  - curl -sS https://getcomposer.org/installer | php
+  - php composer.phar install --dev
+
+script:
+#  - vendor/phpunit/phpunit/phpunit --bootstrap vendor/autoload.php tests/
+  - bash run_tests.sh

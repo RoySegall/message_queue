@@ -12,6 +12,12 @@
         "kint-php/kint": "^2.2"
     },
     "autoload": {
-        "psr-4": {"MessageQueue\\": "src/"}
+        "psr-4": {
+            "MessageQueue\\": "src/",
+            "tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
     }
 }
