@@ -15,8 +15,11 @@ class MessageQueue implements MessageQueueInterface {
 
   /**
    * Constructing a message.
+   *
+   * @throws QueueWorkers\QueueWorkerException
    */
   public function __construct() {
+    $this->QueueWorkerManager = QueueWorkerManager::getById('memory');
   }
 
   /**
@@ -25,7 +28,7 @@ class MessageQueue implements MessageQueueInterface {
    * @param Message $message
    */
   public function sendMessage(Message $message) {
-
+    $this->QueueWorkerManager->add($message);
   }
 
   /**

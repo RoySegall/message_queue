@@ -2,6 +2,8 @@
 
 namespace MessageQueue\QueueWorkers;
 
+use MessageQueue\Message;
+
 class MemcacheQueueWorker extends QueueWorkerBase {
 
   /**
@@ -13,13 +15,13 @@ class MemcacheQueueWorker extends QueueWorkerBase {
   /**
    * {@inheritdoc}
    */
-  function add() {
+  function add(Message $message) {
   }
 
   /**
    * {@inheritdoc}
    */
-  function delete() {
+  function delete($message_id) {
   }
 
 }

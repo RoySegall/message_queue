@@ -2,6 +2,8 @@
 
 namespace MessageQueue\QueueWorkers;
 
+use MessageQueue\Message;
+
 class MySqlQueueWorker extends QueueWorkerBase {
 
   /**
@@ -13,13 +15,13 @@ class MySqlQueueWorker extends QueueWorkerBase {
   /**
    * {@inheritdoc}
    */
-  function add() {
+  function add(Message $message) {
   }
 
   /**
    * {@inheritdoc}
    */
-  function delete() {
+  function delete($message_id) {
   }
 
 }

@@ -2,24 +2,33 @@
 
 namespace MessageQueue\QueueWorkers;
 
+use MessageQueue\Message;
+
+/**
+ * Class SimpleQueueWorker.
+ *
+ * The simple queue worker keep the messages in a class property.
+ *
+ * @package MessageQueue\QueueWorkers
+ */
 class SimpleQueueWorker extends QueueWorkerBase {
 
   /**
-   * {@inheritdoc}
-   */
+ * {@inheritdoc}
+ */
   function get() {
   }
 
   /**
    * {@inheritdoc}
    */
-  function add() {
+  function add(Message $message) {
   }
 
   /**
    * {@inheritdoc}
    */
-  function delete() {
+  function delete($message_id) {
   }
 
 }

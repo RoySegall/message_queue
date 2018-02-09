@@ -10,8 +10,14 @@ use MessageQueue\QueueWorkers\QueueWorkerException;
  * The queue worker manager initiate the worker you need for you by the logic
  * that's suites you.
  *
- * @package MessageQueue
+ * Example on how to use it:
  *
+ * @code
+ * $worker = QueueWorkerManager::getById('memory');
+ * $worker->add($message)
+ * @endcode
+ *
+ * @package MessageQueue
  * todo: define as a service.
  */
 class QueueWorkerManager {
@@ -23,7 +29,7 @@ class QueueWorkerManager {
    *
    * todo: move to plugin type system.
    */
-  protected $mappers = [
+  protected static $mappers = [
     'memory' => '\MessageQueue\QueueWorkers\SimpleQueueWorker',
     'mysql' => '\MessageQueue\QueueWorkers\MySqlQueueWorker',
     'redis' => '\MessageQueue\QueueWorkers\RedisQueueWorker',
@@ -43,13 +49,13 @@ class QueueWorkerManager {
    *
    * @throws QueueWorkerException
    */
-  public function getById($id) {
+  static function getById($id) {
 
-    if (!in_array($id, array_keys($this->mappers))) {
+    if (!in_array($id, array_keys(self::$mappers))) {
       throw new QueueWorkerException(sprintf('The %s queue worker does not exists.', $id));
     }
 
-    return new $this->mappers[$id];
+    return new self::$mappers[$id];
   }
 
 }
