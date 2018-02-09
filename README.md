@@ -1,5 +1,7 @@
 # Message Queue
 
+[![Build Status](https://travis-ci.org/RoySegall/message_queue.svg?branch=master)](https://travis-ci.org/RoySegall/message_queue)
+
 
 Welcome to the message queue example. Just like the [linkedin parser](https://github.com/RoySegall/linkedin-python-parser)
 this is another home assignment.
