@@ -45,7 +45,7 @@ class MessageTest extends TestCase {
     $this->assertEquals($message, [
       'message_type' => "delivery_destination",
       'category' => "actions",
-      'text' => "MasterChef Kitchen sIL",
+      'text' => "MasterChef Kitchen IL",
       'reserver_name' => "pizza_hut_dispatch_server",
     ]);
   }
