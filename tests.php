@@ -1,9 +1,10 @@
 <?php
 
+error_reporting(E_ALL);
+
 use MessageQueue\MessageQueue;
 
 require_once 'vendor/autoload.php';
 
-$foo = new MessageQueue();
-
-Kint::dump('a');
+$workerManager = new \MessageQueue\QueueWorkerManager();
+$worker = $workerManager->getById('memory');
