@@ -53,8 +53,13 @@ $memory->add($message);
 Note: For now, only memory storage is supported.
 
 ## Tests
-Run tests by:
+Run PHPUnit by:
 ```bash
 bash run_tests.sh
+```
+
+If you want to play with the code, as I did, just do:
+```bash
+php playground.php
 ```
 
