@@ -19,30 +19,21 @@ class MessageQueue implements MessageQueueInterface {
    * @throws QueueWorkers\QueueWorkerException
    */
   public function __construct() {
+    // The queue worker type should be define inside a settings file.
     $this->QueueWorkerManager = QueueWorkerManager::getById('memory');
   }
 
   /**
-   * Adds a message to the queue.
-   *
-   * @param Message $message
+   * {@inheritdoc}
    */
   public function sendMessage(Message $message) {
     $this->QueueWorkerManager->add($message);
+
+    return $this;
   }
 
   /**
-   * Reserves the first added message in queue that fits the filter.
-   *
-   * @param string $reserver_name
-   *   The reserver name.
-   * @param string $category
-   *   The category of the message. Optional.
-   * @param string $message_type
-   *   The message type. Optional.
-   *
-   * @return Message
-   *   The first message which match this filters.
+   * {@inheritdoc}
    */
   public function reserveMessage($reserver_name, $category = NULL, $message_type = NULL) {
     return $this->QueueWorkerManager
@@ -53,10 +44,10 @@ class MessageQueue implements MessageQueueInterface {
   }
 
   /**
-   * Deleting a message from the queue.
+   * {@inheritdoc}
    */
-  public function deleteMessage() {
-
+  public function deleteMessage($message_id) {
+    $this->QueueWorkerManager->delete($message_id);
   }
 
 }
