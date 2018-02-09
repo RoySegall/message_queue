@@ -1,0 +1,17 @@
+{
+    "name": "roysegall/message_queue",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Roy Segall",
+            "email": "roy.segall@gizra.com"
+        }
+    ],
+    "require": {
+        "kint-php/kint": "^2.2"
+    },
+    "autoload": {
+        "psr-4": {"MessageQueue\\": "src/"}
+    }
+}
