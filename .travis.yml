@@ -3,8 +3,13 @@ sudo: false
 
 php:  7.1
 
-addons:
-  rethinkdb: "2.3"
+# Add this in the future.
+#addons:
+#  rethinkdb: "2.3"
+
+cache:
+  directories:
+    - /home/travis/build/RoySegall/message_queue/vendor
 
 before_script:
   # Installing composer
